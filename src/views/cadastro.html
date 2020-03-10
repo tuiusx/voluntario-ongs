@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8"> 
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Seja Vonluntário</title>
+        <link rel="stylesheet" href="/assets/css/styles.css">
+        <link rel="stylesheet" href="/assets/css/form.css">
+        
+    </head>
+    <body>
+
+        <main class="container">
+            <header class="header row">
+                <a href="/">
+                    <img src="/assets/imagens/logo.png" 
+                    alt="Logo do Seja Vonluntário"
+                    >
+                    <h1 class="text-red text-shadow">Seja Vonluntário</h1>
+                </a>
+            </header>
+            <section class="form row">
+                <h2 class="text-green">Cadastre sua vaga de voluntariado</h2>
+                <form class="flex" onsubmit="return validateNotice(this)" method="POST" action="/cadastro">
+                    <input type="text"name="email" class="col-full" 
+                        placeholder="Informe o e-mail do responsável..." >
+                    <textarea name="descricao" placeholder="Informe a descrição da vaga..." rows="4"></textarea>
+                    
+                    <div class="form-row">
+                        <input type="text"name="titulo" class="col-half" 
+                            placeholder="Informe o titulo da vaga..." >
+
+                        <input type="text"name="cidade" class="col-half" 
+                            placeholder="Informe a cidade..." >
+                    </div>
+                    <div class="text-right">
+                        <button type="submit" class="btn btn-green">Enviar Anúncio</button>
+                    </div>
+                </form>
+            </section>
+
+            <footer class="footer">
+                <p>
+                    <strong>Seja Vonluntário</strong> - Feito com amor na cidade de São Paulo.
+                </p>
+            </footer>
+        </main>
+        <script src="/assets/js/forms.js"></script>
+    </body>
+</html>

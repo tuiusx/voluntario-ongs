@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8"> 
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Seja Vonluntário</title>
+        <link rel="stylesheet" href="/assets/css/styles.css">
+        <link rel="stylesheet" href="/assets/css/form.css">
+        
+    </head>
+    <body>
+
+        <main class="container">
+            <header class="header row">
+                <a href="/">
+                    <img src="/assets/imagens/logo.png" 
+                    alt="Logo do Seja Vonluntário"
+                    >
+                    <h1 class="text-red text-shadow">Seja Vonluntário</h1>
+                </a>
+            </header>   
+
+            <section class="notices row" id="app">
+               
+                <div class="form form-search">
+                    <h2 class="text-blue">Busque uma vaga de Vonluntario</h2>
+                    <form class="flex" @submit.prevent="buscar">
+                        <input type="text" name="key" class="col-half" v-model="key"
+                        placeholder="Entre com o que deseja buscar...">
+                        <button type="submit" class="btn btn-blue">Buscar</button>
+                    </form>
+                </div>
+
+                <div class="grid grid-col-3" v-if="vagas">   
+                    <article v-for="vaga in vagas" class="notice">
+                        <h4>\{{vaga.titulo}}</h4>
+                        <p class="city"><strong>\{{vaga.cidade}}</strong></p>
+                        <p>\{{vaga.descricao}}</p>
+                        <p>
+                            <a class="btn btn-red" :href="'/anuncio/'+vaga.id">Saiba mais</a>
+                        </p>
+                    </article>
+                </div>
+                <p v-else>Nenhuma vaga encontrada</p> 
+            </section>
+
+            <footer class="footer">
+                <p>
+                    <strong>Seja Vonluntário</strong> - Feito com amor na cidade de São Paulo.
+                </p>
+            </footer>
+        </main>
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+        <script>
+            const app= new Vue({
+                el: "#app",
+                data: () => ({
+                    vagas: null,
+                    key: ''
+                }),
+                methods: {
+                    async buscar() {
+                        try {
+                            const response = await axios.get(`/api/busca?key=${this.key}`)
+                            this.vagas = response.data
+                        }catch(err) {
+                            Console.error(err)
+                        }
+                    }
+                },
+            })
+
+        </script>
+
+    </body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8"> 
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Seja Vonluntário</title>
+        <link rel="stylesheet" href="/assets/css/styles.css">
+        
+    </head>
+    <body>
+
+        <main class="container">
+            <header class="header row">
+                <a href="/">
+                    <img src="/assets/imagens/logo.png" 
+                    alt="Logo do Seja Vonluntário"
+                    >
+                    <h1 class="text-red text-shadow">Seja Vonluntário</h1>
+                </a>
+            </header>
+            <section class="cta flex row">
+                <article>
+                    <h2 class="text-blue">Busque vaga de vonluntariado</h2>
+                    <p>
+                        Busque uma vaga de perto de você e tome uma atitude
+                        transformadora ajudando o próximo.
+                    </p>
+                    <p>
+                        <a class="btn btn-blue" href="/busca">Quero ser Vonluntário</a>
+                    </p>
+                </article>
+
+                <article>
+                    <h2 class="text-green">Anuncie vaga de vonluntariado</h2>
+                    <p>
+                        Você que é de uma ONG ou instituição filantropica,
+                        cadastre suas vagas para encontrar voluntários ai perto de você.
+                    </p>
+                    <p>
+                        <a class="btn btn-green" href="/cadastro">Quero anunciar</a>
+                    </p>
+                </article>
+            </section>
+
+            <section class="notices row">
+                <h3 class="text-red">Últimos anúncios de vagas</h3>
+                <div class="grid grid-col-3">
+                    {{#each vagas}}
+                    <article class="notice">
+                        <h4>{{this.titulo}}</h4>
+                        <p class="city"><strong>{{this.cidade}}</strong></p>
+                        <p>{{this.descricao}}</p>
+                        <p>
+                            <a class="btn btn-red" href="/anuncio/{{this.id}}">Saiba mais</a>
+                        </p>
+                    </article>   
+                    {{/each}}
+                </div>
+            </section>
+
+            <footer class="footer">
+                <p>
+                    <strong>Seja Vonluntário</strong> - Feito com amor na cidade de São Paulo.
+                </p>
+            </footer>
+        </main>
+
+    </body>
+</html>
